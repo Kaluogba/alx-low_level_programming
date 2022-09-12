@@ -1,50 +1,39 @@
 #include <stdio.h>
 
 /**
- * main - Prints numbers between 00 to 99.
+ * main - loop through variables a,b,c printing digits
  *
- * Return: Always 0 (Success)
- *
+ * Return: print to stdout all possible different combinations of three digits
  */
 
 int main(void)
 {
-	int i, e, g, h, op1, op2;
+	int a = 0;
+	int b;
 
-	i = e = g = h = 48;
-	while (h < 58)
+	while (a <= 98)
 	{
-		g = 48;
-		while (g < 48)
+		b = a + 1;
+
+		while (b <= 99)
 		{
-			e = 48;
-			while (e < 58)
+			putchar(a / 10 % 10 + '0');
+			putchar(a % 10 + '0');
+			putchar(' ');
+			putchar(b / 10 % 10 + '0');
+			putchar(b % 10 + '0');
+			if (a == 98 && b == 99)
 			{
-				i = 48;
-				while (i < 58)
-				{
-					op1 = (h * 10) + g;
-					op2 = (e * 10) + i;
-					if (op1 < op2)
-					{
-						putchar(h);
-						putchar(g);
-						putchar(' ');
-						putchar(e);
-						putchar(i);
-						if (h == 57 && g == 56 && e == 57 && i == 57)
-							break;
-						putchar(',');
-						putchar(' ');
-					}
-					i++;
-				}
-				e++;
+				putchar('\n');
 			}
-			g++;
+			else
+			{
+				putchar(',');
+				putchar(' ');
+			}
+			b++;
 		}
-		h++;
+		a++;
 	}
-	putchar('\n');
 	return (0);
 }
